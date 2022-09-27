@@ -57,6 +57,10 @@ public class UserInterface {
                 case "look":
                     System.out.println(adventure.getCurrentRoom());
                     break;
+
+                default:
+                    System.out.println("Invalid request, try again.");
+                    break;
             }
         }
     }
