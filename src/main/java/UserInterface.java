@@ -12,13 +12,15 @@ public class UserInterface {
         while (true) {
             System.out.println("What do you want to do?");
             String action = sc.nextLine().toLowerCase();
-            if (action.equalsIgnoreCase("n") || action.contains("north")) {
+
+            //Alternative inputs
+            if (action.equals("n") || action.contains("north")) {
                 action = "go north";
-            } else if (action.equalsIgnoreCase("s")   || action.contains("south")) {
+            } else if (action.equals("s")   || action.contains("south")) {
                 action = "go south";
-            } else if (action.equalsIgnoreCase("e") || action.contains("east")) {
+            } else if (action.equals("e") || action.contains("east")) {
                 action = "go east";
-            } else if (action.equalsIgnoreCase("w")  || action.contains("west")) {
+            } else if (action.equals("w")  || action.contains("west")) {
                 action = "go west";
             }
 
