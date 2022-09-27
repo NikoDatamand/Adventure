@@ -11,7 +11,16 @@ public class UserInterface {
     public void handleInput(){
         while (true) {
             System.out.println("What do you want to do?");
-            String action = sc.nextLine();
+            String action = sc.nextLine().toLowerCase();
+            if (action.equalsIgnoreCase("n") || action.contains("north")) {
+                action = "go north";
+            } else if (action.equalsIgnoreCase("s")   || action.contains("south")) {
+                action = "go south";
+            } else if (action.equalsIgnoreCase("e") || action.contains("east")) {
+                action = "go east";
+            } else if (action.equalsIgnoreCase("w")  || action.contains("west")) {
+                action = "go west";
+            }
 
             switch (action) {
                 case "go north":
