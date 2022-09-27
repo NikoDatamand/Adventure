@@ -69,6 +69,24 @@ public class UserInterface {
                     System.out.println(adventure.getCurrentRoom());
                     break;
 
+                case "help":
+                    System.out.println("""
+                                    
+                                    COMMANDS:
+                                    
+                                    go north
+                                    go south
+                                    go east
+                                    go west
+                                    look
+                                    exit
+                                    
+                                    """);
+                    break;
+
+                case "exit" :
+                    System.exit(0);
+
                 default:
                     System.out.println("Invalid request, try again.");
                     break;
