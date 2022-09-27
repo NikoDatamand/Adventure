@@ -10,7 +10,7 @@ public class Adventure {
     private Room room8 = null;
     private Room room9 = null;
 
-    private Room currentRoom = room1;
+    private Room currentRoom;
 
     //Gettere
     public Room getRoom1() {
@@ -19,6 +19,11 @@ public class Adventure {
 
     public Room getCurrentRoom() {
         return currentRoom;
+    }
+
+    //Settere
+    public void setCurrentRoom(Room newCurrentRoom) {
+        this.currentRoom = newCurrentRoom;
     }
 
     public void createMap(){
@@ -58,5 +63,7 @@ public class Adventure {
 
         room9.setNorth(room6);
         room9.setWest(room8);
+
+        setCurrentRoom(room1);
     }
 }

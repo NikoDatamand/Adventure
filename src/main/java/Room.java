@@ -9,10 +9,10 @@ public class Room {
     public Room(String name, String description){
         this.name = name;
         this.description = description;
-        north = null;
-        south = null;
-        east = null;
-        west = null;
+        this.north = null;
+        this.south = null;
+        this.east = null;
+        this.west = null;
     }
 
     //Gettere
