@@ -1,8 +1,12 @@
 import java.util.Scanner;
 public class UserInterface {
-
+    Adventure adventure = new Adventure();
     Scanner sc = new Scanner(System.in);
 
+    public void start(){
+        System.out.println("Current room: " + adventure.getLibrary().getName());
+        handleInput();
+    }
     public void handleInput(){
         System.out.println("What do you want to do?");
         String action = sc.nextLine();
@@ -25,7 +29,7 @@ public class UserInterface {
                 break;
 
             case "look":
-                System.out.println("looking around");
+                System.out.println(adventure.getCurrentRoom().getDescription());
                 break;
         }
     }
