@@ -4,7 +4,7 @@ public class UserInterface {
     Scanner sc = new Scanner(System.in);
 
     public void start(){
-        System.out.println("Current room: " + adventure.getLibrary().getName());
+        System.out.println(adventure.getCurrentRoom());
         handleInput();
     }
     public void handleInput(){
@@ -29,7 +29,7 @@ public class UserInterface {
                 break;
 
             case "look":
-                System.out.println(adventure.getCurrentRoom().getDescription());
+                System.out.println(adventure.getCurrentRoom());
                 break;
         }
     }

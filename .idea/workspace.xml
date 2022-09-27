@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7cf7873b-4e45-44ed-98e3-d02d9d240912" name="Changes" comment="Delopgave 1.1">
+    <list default="true" id="7cf7873b-4e45-44ed-98e3-d02d9d240912" name="Changes" comment="Delopgave 1.2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Adventure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adventure.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
@@ -50,7 +50,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664269125810</updated>
-      <workItem from="1664269127956" duration="3674000" />
+      <workItem from="1664269127956" duration="8356000" />
     </task>
     <task id="LOCAL-00001" summary="New .gitignore">
       <created>1664269321613</created>
@@ -73,7 +73,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664271481993</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Delopgave 1.2">
+      <created>1664272922545</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1664272922545</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -94,6 +101,7 @@
     <MESSAGE value="New .gitignore" />
     <MESSAGE value="added Adventure, Room and UI classes" />
     <MESSAGE value="Delopgave 1.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Delopgave 1.1" />
+    <MESSAGE value="Delopgave 1.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Delopgave 1.2" />
   </component>
 </project>
