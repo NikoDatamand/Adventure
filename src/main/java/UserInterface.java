@@ -1,11 +1,14 @@
 import java.util.Scanner;
 public class UserInterface {
-    Adventure adventure = new Adventure();
-    Scanner sc = new Scanner(System.in);
+    Adventure adventure;
+    Scanner sc;
 
+    public UserInterface(){
+        adventure = new Adventure();
+        sc = new Scanner(System.in);
+    }
     public void start(){
-        adventure.createMap();
-        System.out.println(adventure.getCurrentRoom());
+        System.out.println(adventure.player.getCurrentRoom());
         handleInput();
     }
     public void handleInput(){
@@ -26,47 +29,47 @@ public class UserInterface {
 
             switch (action) {
                 case "go north":
-                    if (adventure.getCurrentRoom().getNorth() != null) {
-                        adventure.setCurrentRoom(adventure.getCurrentRoom().getNorth());
+                    if (adventure.player.getCurrentRoom().getNorth() != null) {
+                        adventure.player.setCurrentRoom(adventure.player.getCurrentRoom().getNorth());
                         System.out.println("going north");
-                        System.out.println(adventure.getCurrentRoom());
-                    } else if (adventure.getCurrentRoom().getNorth() == null) {
+                        System.out.println(adventure.player.getCurrentRoom());
+                    } else if (adventure.player.getCurrentRoom().getNorth() == null) {
                         System.out.println("You can't go that way!");
                     }
                     break;
 
                 case "go south":
-                    if (adventure.getCurrentRoom().getSouth() != null) {
-                        adventure.setCurrentRoom(adventure.getCurrentRoom().getSouth());
+                    if (adventure.player.getCurrentRoom().getSouth() != null) {
+                        adventure.player.setCurrentRoom(adventure.player.getCurrentRoom().getSouth());
                         System.out.println("going south");
-                        System.out.println(adventure.getCurrentRoom());
-                    } else if (adventure.getCurrentRoom().getSouth() == null) {
+                        System.out.println(adventure.player.getCurrentRoom());
+                    } else if (adventure.player.getCurrentRoom().getSouth() == null) {
                         System.out.println("You can't go that way!");
                     }
                     break;
 
                 case "go east":
-                    if (adventure.getCurrentRoom().getEast() != null) {
-                        adventure.setCurrentRoom(adventure.getCurrentRoom().getEast());
+                    if (adventure.player.getCurrentRoom().getEast() != null) {
+                        adventure.player.setCurrentRoom(adventure.player.getCurrentRoom().getEast());
                         System.out.println("going east");
-                        System.out.println(adventure.getCurrentRoom());
-                    } else if (adventure.getCurrentRoom().getEast() == null) {
+                        System.out.println(adventure.player.getCurrentRoom());
+                    } else if (adventure.player.getCurrentRoom().getEast() == null) {
                         System.out.println("You can't go that way!");
                     }
                     break;
 
                 case "go west":
-                    if (adventure.getCurrentRoom().getWest() != null) {
-                        adventure.setCurrentRoom(adventure.getCurrentRoom().getWest());
+                    if (adventure.player.getCurrentRoom().getWest() != null) {
+                        adventure.player.setCurrentRoom(adventure.player.getCurrentRoom().getWest());
                         System.out.println("going west");
-                        System.out.println(adventure.getCurrentRoom());
-                    } else if (adventure.getCurrentRoom().getWest() == null) {
+                        System.out.println(adventure.player.getCurrentRoom());
+                    } else if (adventure.player.getCurrentRoom().getWest() == null) {
                         System.out.println("You can't go that way!");
                     }
                     break;
 
                 case "look":
-                    System.out.println(adventure.getCurrentRoom());
+                    System.out.println(adventure.player.getCurrentRoom());
                     break;
 
                 case "help":
