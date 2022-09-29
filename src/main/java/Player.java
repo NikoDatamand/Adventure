@@ -7,7 +7,7 @@ public class Player {
 
     public Player(){
         currentRoom = new Room(null, null);
-        inventory = new ArrayList<>();
+        inventory = new ArrayList<Item>();
     }
 
     //Room metoder
@@ -37,9 +37,12 @@ public class Player {
     }
 
     public void deleteItemFromInventory(Item item){
-        for (Item s: inventory) {
-            if(s.getName().equals(item.getName()))
-                inventory.remove(s);
+        int index = -1;
+        for (int i = 0; i < inventory.size(); i++) {
+            if (inventory.get(i) == item){
+                index = i;
+            }
         }
+        inventory.remove(index);
     }
 }

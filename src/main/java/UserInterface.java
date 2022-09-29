@@ -65,11 +65,11 @@ public class UserInterface {
                 case "take" -> {
                     Item requiredItem = adventure.player.getCurrentRoom().searchItem(command[1]);
                     if (requiredItem != null) {
-                        adventure.player.addItemToInventory(new Item(requiredItem));
+                        adventure.player.addItemToInventory(requiredItem);
                         adventure.player.getCurrentRoom().deleteItemFromRoom(requiredItem);
                         System.out.println("You've taken " + command[1]);
                      } else {
-                        System.out.println(command[1] + " couldn't be find in this room");
+                        System.out.println(command[1] + " couldn't be found in this room");
                     }
                 }
 

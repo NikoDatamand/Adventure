@@ -34,7 +34,11 @@ public class Map {
         setDirection(room8, room5, null, room9, room7);
         setDirection(room9, room6, null, null, room8);
 
-        addItemsToRoom(room1, "banana", "pear");
+        addItemsToRoom(room1, "a");
+        addItemsToRoom(room1, "b", "c", "d");
+
+
+
     }
 
     public void addItemsToRoom(Room room, String itemName){

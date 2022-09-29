@@ -75,10 +75,13 @@ public class Room {
     }
 
     public void deleteItemFromRoom(Item item){
-        for (Item s: items) {
-            if(s.getName().equals(item.getName()))
-                items.remove(s);
+        int index = -1;
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i) == item){
+                index = i;
+            }
         }
+        items.remove(index);
     }
 
     public String toString() {
