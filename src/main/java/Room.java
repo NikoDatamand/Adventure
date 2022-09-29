@@ -74,7 +74,14 @@ public class Room {
         return null;
     }
 
+    public void deleteItemFromRoom(Item item){
+        for (Item s: items) {
+            if(s.getName().equals(item.getName()))
+                items.remove(s);
+        }
+    }
+
     public String toString() {
-        return "You are in the " + name + "\n" + description;
+        return "You are in the " + name + "\n" + description + "\n" + "You see: " + items;
     }
 }

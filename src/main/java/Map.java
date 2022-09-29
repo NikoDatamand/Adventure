@@ -33,6 +33,23 @@ public class Map {
         setDirection(room7, room4, null, room8, null);
         setDirection(room8, room5, null, room9, room7);
         setDirection(room9, room6, null, null, room8);
+
+        addItemsToRoom(room1, "banana", "pear");
+    }
+
+    public void addItemsToRoom(Room room, String itemName){
+        room.addItem(new Item(itemName));
+    }
+
+    public void addItemsToRoom(Room room, String itemName1, String itemName2){
+        room.addItem(new Item(itemName1));
+        room.addItem(new Item(itemName2));
+    }
+
+    public void addItemsToRoom(Room room, String itemName1, String itemName2, String itemName3){
+        room.addItem(new Item(itemName1));
+        room.addItem(new Item(itemName2));
+        room.addItem(new Item(itemName3));
     }
 
     public void setDirection(Room room, Room north, Room south, Room east, Room west){
