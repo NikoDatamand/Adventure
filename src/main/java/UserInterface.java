@@ -63,17 +63,24 @@ public class UserInterface {
 
                 }
                 case "take" -> {
-                    Item requiredItem = adventure.player.getCurrentRoom().searchItem(command[1]);
-                    if (requiredItem != null) {
-                        adventure.player.addItemToInventory(requiredItem);
-                        adventure.player.getCurrentRoom().deleteItemFromRoom(requiredItem);
+                    boolean itemTaken = adventure.player.takeItem(command[1]);
+                    if (itemTaken) {
                         System.out.println("You've taken " + command[1]);
                      } else {
                         System.out.println(command[1] + " couldn't be found in this room");
                     }
                 }
 
-                case "inventory" -> System.out.println(adventure.player.printInventory());
+                case "drop" -> {
+                    boolean itemDropped = adventure.player.dropItem(command[1]);
+                    if (itemDropped){
+                        System.out.println("you dropped " + command[1]);
+                    }else {
+                        System.out.println(command[1] + " is not in your inventory.");
+                    }
+                }
+
+                case "inventory", "inv" -> System.out.println(adventure.player.printInventory());
 
 
                 case "look" -> System.out.println(adventure.player.getCurrentRoom());

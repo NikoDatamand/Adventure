@@ -36,7 +36,7 @@ public class Player {
         return inventory;
     }
 
-    public void deleteItemFromInventory(Item item){
+    public void removeItemFromInventory(Item item){
         int index = -1;
         for (int i = 0; i < inventory.size(); i++) {
             if (inventory.get(i) == item){
@@ -44,5 +44,26 @@ public class Player {
             }
         }
         inventory.remove(index);
+    }
+    public boolean takeItem(String itemName){
+        boolean takeItem = false;
+        Item requiredItem = getCurrentRoom().searchItem(itemName);
+        if(requiredItem != null){
+            addItemToInventory(requiredItem);
+            getCurrentRoom().removeItemFromRoom(requiredItem);
+            takeItem = true;
+        }
+        return takeItem;
+    }
+
+    public boolean dropItem(String itemName){
+        boolean dropItem = false;
+        Item requiredItem = searchItemInInventory(itemName);
+        if(requiredItem != null){
+            getCurrentRoom().addItem(requiredItem);
+            removeItemFromInventory(requiredItem);
+            dropItem = true;
+        }
+        return dropItem;
     }
 }

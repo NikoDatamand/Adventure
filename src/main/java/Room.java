@@ -74,7 +74,7 @@ public class Room {
         return null;
     }
 
-    public void deleteItemFromRoom(Item item){
+    public void removeItemFromRoom(Item item){
         int index = -1;
         for (int i = 0; i < items.size(); i++) {
             if (items.get(i) == item){
