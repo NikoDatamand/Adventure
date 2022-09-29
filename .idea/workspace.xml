@@ -4,145 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7cf7873b-4e45-44ed-98e3-d02d9d240912" name="Changes" comment="Delopgave 1 - refactored &#10;better switch in UI now with .split">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Room.java" afterDir="false" />
+    <list default="true" id="41b819ed-f6c7-4518-a389-ca201f89dcb4" name="Changes" comment="Delopgave 1 - refactored &#10;better switch in UI now with .split">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProjectId" id="2FLQwTonfYUJyxjKtkVfmZinsj3" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;
-  }
-}</component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="7cf7873b-4e45-44ed-98e3-d02d9d240912" name="Changes" comment="" />
-      <created>1664269125810</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1664269125810</updated>
-      <workItem from="1664269127956" duration="12332000" />
-      <workItem from="1664346295192" duration="7641000" />
-      <workItem from="1664361386857" duration="1261000" />
-      <workItem from="1664363954810" duration="42000" />
-      <workItem from="1664446863564" duration="3484000" />
-    </task>
-    <task id="LOCAL-00001" summary="New .gitignore">
-      <created>1664269321613</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1664269321613</updated>
-    </task>
-    <task id="LOCAL-00002" summary="added Adventure, Room and UI classes">
-      <created>1664269965519</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1664269965519</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Delopgave 1.1">
-      <created>1664271481993</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1664271481993</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Delopgave 1.2">
-      <created>1664272922545</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1664272922545</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Delopgave 1.3">
-      <created>1664278199314</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1664278199314</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Delopgave 1.4">
-      <created>1664282216095</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1664282216095</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Delopgave 1 - refactored">
-      <created>1664359033836</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1664359033836</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Delopgave 1 - refactored &#10;better switch in UI">
-      <created>1664362523453</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1664362523453</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Delopgave 1 - refactored &#10;better switch in UI now with .split">
-      <created>1664449290108</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1664449290108</updated>
-    </task>
-    <option name="localTasksCounter" value="10" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="New .gitignore" />
-    <MESSAGE value="added Adventure, Room and UI classes" />
-    <MESSAGE value="Delopgave 1.1" />
-    <MESSAGE value="Delopgave 1.2" />
-    <MESSAGE value="Delopgave 1.3" />
-    <MESSAGE value="Delopgave 1.4" />
-    <MESSAGE value="Delopgave 1 - refactored" />
-    <MESSAGE value="Delopgave 1 - refactored &#10;better switch in UI" />
-    <MESSAGE value="Delopgave 1 - refactored &#10;better switch in UI now with .split" />
-    <option name="LAST_COMMIT_MESSAGE" value="Delopgave 1 - refactored &#10;better switch in UI now with .split" />
   </component>
 </project>
