@@ -19,6 +19,42 @@ public class Player {
         this.currentRoom = newCurrentRoom;
     }
 
+    public boolean goNorth(){
+        if (currentRoom.getNorth() != null) {
+            setCurrentRoom(currentRoom.getNorth());
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean goSouth(){
+        if (currentRoom.getSouth() != null) {
+            setCurrentRoom(currentRoom.getSouth());
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean goEast(){
+        if (currentRoom.getEast() != null) {
+            setCurrentRoom(currentRoom.getEast());
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean goWest(){
+        if (currentRoom.getWest() != null) {
+            setCurrentRoom(currentRoom.getWest());
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     //Item metoder
     public void addItemToInventory(Item item){
         inventory.add(item);
@@ -47,10 +83,10 @@ public class Player {
     }
     public boolean takeItem(String itemName){
         boolean takeItem = false;
-        Item requiredItem = getCurrentRoom().searchItem(itemName);
+        Item requiredItem = currentRoom.searchItem(itemName);
         if(requiredItem != null){
             addItemToInventory(requiredItem);
-            getCurrentRoom().removeItemFromRoom(requiredItem);
+            currentRoom.removeItemFromRoom(requiredItem);
             takeItem = true;
         }
         return takeItem;

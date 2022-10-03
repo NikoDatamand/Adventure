@@ -1,14 +1,14 @@
 import java.util.Scanner;
 public class UserInterface {
-    Adventure adventure;
-    Scanner sc;
+    private Adventure adventure;
+    private Scanner sc;
 
     public UserInterface(){
         adventure = new Adventure();
         sc = new Scanner(System.in);
     }
     public void start(){
-        System.out.println(adventure.player.getCurrentRoom());
+        System.out.println(adventure.getPlayer().getCurrentRoom());
         handleInput();
     }
     public void handleInput(){
@@ -21,41 +21,41 @@ public class UserInterface {
                 case "go" ->{
                     switch ((command[1])) {
                         case "north", "n" -> {
-                            if (adventure.player.getCurrentRoom().getNorth() != null) {
-                                adventure.player.setCurrentRoom(adventure.player.getCurrentRoom().getNorth());
+                            boolean goingNorth = adventure.goNorth();
+                            if (goingNorth) {
                                 System.out.println("going north");
-                                System.out.println(adventure.player.getCurrentRoom());
-                            } else if (adventure.player.getCurrentRoom().getNorth() == null) {
+                                System.out.println(adventure.getPlayer().getCurrentRoom());
+                            } else  {
                                 System.out.println("You can't go that way!");
                             }
                         }
 
                         case "south", "s" -> {
-                            if (adventure.player.getCurrentRoom().getSouth() != null) {
-                                adventure.player.setCurrentRoom(adventure.player.getCurrentRoom().getSouth());
+                            boolean goingSouth = adventure.goSouth();
+                            if (goingSouth) {
                                 System.out.println("going south");
-                                System.out.println(adventure.player.getCurrentRoom());
-                            } else if (adventure.player.getCurrentRoom().getSouth() == null) {
+                                System.out.println(adventure.getPlayer().getCurrentRoom());
+                            } else {
                                 System.out.println("You can't go that way!");
                             }
                         }
 
                         case "east", "e" -> {
-                            if (adventure.player.getCurrentRoom().getEast() != null) {
-                                adventure.player.setCurrentRoom(adventure.player.getCurrentRoom().getEast());
+                            boolean goingEast = adventure.goEast();
+                            if (goingEast) {
                                 System.out.println("going east");
-                                System.out.println(adventure.player.getCurrentRoom());
-                            } else if (adventure.player.getCurrentRoom().getEast() == null) {
+                                System.out.println(adventure.getPlayer().getCurrentRoom());
+                            } else {
                                 System.out.println("You can't go that way!");
                             }
                         }
 
                         case "west", "w" -> {
-                            if (adventure.player.getCurrentRoom().getWest() != null) {
-                                adventure.player.setCurrentRoom(adventure.player.getCurrentRoom().getWest());
+                            boolean goingWest = adventure.goWest();
+                            if (goingWest) {
                                 System.out.println("going west");
-                                System.out.println(adventure.player.getCurrentRoom());
-                            } else if (adventure.player.getCurrentRoom().getWest() == null) {
+                                System.out.println(adventure.getPlayer().getCurrentRoom());
+                            } else if (adventure.getPlayer().getCurrentRoom().getWest() == null) {
                                 System.out.println("You can't go that way!");
                             }
                         }
@@ -63,7 +63,7 @@ public class UserInterface {
 
                 }
                 case "take" -> {
-                    boolean itemTaken = adventure.player.takeItem(command[1]);
+                    boolean itemTaken = adventure.getPlayer().takeItem(command[1]);
                     if (itemTaken) {
                         System.out.println("You've taken " + command[1]);
                      } else {
@@ -72,7 +72,7 @@ public class UserInterface {
                 }
 
                 case "drop" -> {
-                    boolean itemDropped = adventure.player.dropItem(command[1]);
+                    boolean itemDropped = adventure.getPlayer().dropItem(command[1]);
                     if (itemDropped){
                         System.out.println("you dropped " + command[1]);
                     }else {
@@ -80,10 +80,9 @@ public class UserInterface {
                     }
                 }
 
-                case "inventory", "inv" -> System.out.println(adventure.player.printInventory());
+                case "inventory", "inv" -> System.out.println(adventure.getPlayer().printInventory());
 
-
-                case "look" -> System.out.println(adventure.player.getCurrentRoom());
+                case "look" -> System.out.println(adventure.getPlayer().getCurrentRoom());
                 case "help" -> System.out.println("""
                                                 
                                                 COMMANDS:

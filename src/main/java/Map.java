@@ -22,7 +22,7 @@ public class Map {
         room6 = new Room("Office 2", "A silent programmer sitting in the corner");
         room7 = new Room("Yard", "Birds are singing");
         room8 = new Room("Entrance Hall", "Wide and empty");
-        room9 = new Room("Reception", "Hot babe looking at me");
+        room9 = new Room("Reception", "Reception desk. No one here.");
 
         setDirection(room1, null, room4, room2, null);
         setDirection(room2, null, null, room3, room1);
