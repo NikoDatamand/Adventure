@@ -34,13 +34,11 @@ public class Map {
         setDirection(room8, room5, null, room9, room7);
         setDirection(room9, room6, null, null, room8);
 
-        addItemsToRoom(room1, "a");
-        addItemsToRoom(room1, "b", "c", "d");
-
-
-
+        addItemsToRoom(room1, "bowl", "bat", "book");
+        addFoodToRoom(room1, "apple", 10, "poison", -10);
     }
 
+    //Add items
     public void addItemsToRoom(Room room, String itemName){
         room.addItem(new Item(itemName));
     }
@@ -56,6 +54,23 @@ public class Map {
         room.addItem(new Item(itemName3));
     }
 
+    //Add food
+    public void addFoodToRoom(Room room, String itemName1, int healthPoints1 ){
+        room.addItem(new Food(itemName1, healthPoints1));
+    }
+
+    public void addFoodToRoom(Room room, String itemName1, int healthPoints1, String itemName2, int healthPoints2){
+        room.addItem(new Food(itemName1, healthPoints1));
+        room.addItem(new Food(itemName2, healthPoints2));
+    }
+
+    public void addFoodToRoom(Room room, String itemName1, int healthPoints1, String itemName2, int healthPoints2, String itemName3, int healthPoints3){
+        room.addItem(new Food(itemName1, healthPoints1));
+        room.addItem(new Food(itemName2, healthPoints2));
+        room.addItem(new Food(itemName3, healthPoints3));
+    }
+
+    //Add directions
     public void setDirection(Room room, Room north, Room south, Room east, Room west){
         room.setNorth(north);
         room.setSouth(south);

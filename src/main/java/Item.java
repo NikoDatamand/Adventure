@@ -5,10 +5,6 @@ public class Item {
         this.name = name;
     }
 
-    public Item(Item source){
-        this.name = source.name;
-    }
-
     public String getName() {
         return name;
     }

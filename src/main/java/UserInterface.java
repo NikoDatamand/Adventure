@@ -8,6 +8,9 @@ public class UserInterface {
         sc = new Scanner(System.in);
     }
     public void start(){
+        System.out.println("""
+                
+                """);
         System.out.println(adventure.getPlayer().getCurrentRoom());
         handleInput();
     }
@@ -80,9 +83,27 @@ public class UserInterface {
                     }
                 }
 
+                case "eat" -> {
+                    boolean itemFound = adventure.getPlayer().doesItemExist(command[1]);
+                    if (itemFound){
+                        Food foodToBeEaten = adventure.getPlayer().searchFoodInInventory(command[1]);
+                        if (foodToBeEaten != null) {
+                            adventure.getPlayer().changeHealth(foodToBeEaten.getHealthPoints());
+                            adventure.getPlayer().eatFood(command[1]);
+                            System.out.println("You've eaten " + command[1]);
+                        } else {
+                            System.out.println(command[1] + " isn't food!");
+                        }
+                    }else {
+                        System.out.println(command[1] + " is not in your inventory.");
+                    }
+
+                }
+
                 case "inventory", "inv" -> System.out.println(adventure.getPlayer().printInventory());
 
                 case "look" -> System.out.println(adventure.getPlayer().getCurrentRoom());
+                case "health" -> System.out.println(adventure.getPlayer().getHealth());
                 case "help" -> System.out.println("""
                                                 
                                                 COMMANDS:

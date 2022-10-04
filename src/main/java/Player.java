@@ -1,13 +1,16 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Player {
     private Room currentRoom;
     private ArrayList<Item> inventory;
+    private int health;
 
 
-    public Player(){
+    public Player(int health){
         currentRoom = new Room(null, null);
         inventory = new ArrayList<Item>();
+        this.health = health;
     }
 
     //Room metoder
@@ -81,6 +84,7 @@ public class Player {
         }
         inventory.remove(index);
     }
+
     public boolean takeItem(String itemName){
         boolean takeItem = false;
         Item requiredItem = currentRoom.searchItem(itemName);
@@ -102,4 +106,55 @@ public class Player {
         }
         return dropItem;
     }
+
+    public int searchItemIndex (String x) {
+        int superheroIndex = 0;
+        for (Item y : inventory) {
+            if (y.getName().contains(x)) {
+                superheroIndex = inventory.indexOf(y);
+            }
+        }
+        return superheroIndex;
+    }
+
+    public boolean doesItemExist(String itemName){
+        boolean doesItemExist = false;
+        Item itemInQuestion = searchItemInInventory(itemName);
+        if(itemInQuestion != null){
+            doesItemExist = true;
+        }
+        return doesItemExist;
+    }
+
+    //Food methods
+    public Food searchFoodInInventory(String item){
+        for (Item s: inventory) {
+            if(s instanceof Food food)
+                if (food.getName().equals(item)){
+                    return food;
+                }
+        }
+        return null;
+    }
+
+    public void eatFood(String foodEaten){
+        inventory.get(searchItemIndex(foodEaten));
+        inventory.remove(searchItemIndex(foodEaten));
+    }
+
+
+    //Health metoder
+    public int getHealth() {
+        return health;
+    }
+
+    public void changeHealth(int changeValue){
+        if (changeValue >= 0) {
+            health = health + changeValue;
+        } else {
+            health = health + changeValue;
+        }
+    }
+
+
 }
