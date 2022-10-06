@@ -1,3 +1,5 @@
+import org.w3c.dom.ranges.Range;
+
 import java.util.Scanner;
 public class UserInterface {
     private Adventure adventure;
@@ -10,6 +12,23 @@ public class UserInterface {
     public void start(){
         System.out.println("""
                 
+                After a long day of work, you get awfully drunk with your colleagues.
+                Looking at the clock, you decide to leave the bar and head home.
+                But dragging your drunk corpse of a body around the city at night,
+                seems more difficult than it seems...
+                
+                COMMANDS:
+                                                
+                go (north, south, east, west)
+                look (in current room)
+                take / drop (item)
+                inventory (see items)
+                equip / unequip (weapon)
+                attack (weapon)
+                eat (food)
+                health (player)
+                help (prints this list of commands)
+                exit
                 """);
         System.out.println(adventure.getPlayer().getCurrentRoom());
         handleInput();
@@ -100,22 +119,77 @@ public class UserInterface {
 
                 }
 
+                case "equip" -> {
+                    boolean itemFound = adventure.getPlayer().doesItemExist(command[1]);
+                    if (itemFound){
+                        Weapon weaponToBeEquipped = adventure.getPlayer().searchWeaponInInventory(command[1]);
+                        if (weaponToBeEquipped != null) {
+                            adventure.getPlayer().equipWeapon(weaponToBeEquipped);
+                            System.out.println("You've equipped " + command[1]);
+                        } else {
+                            System.out.println(command[1] + " isn't a weapon!");
+                        }
+                    }else {
+                        System.out.println(command[1] + " is not in your inventory.");
+                    }
+                }
+
+                case "unequip" -> {
+                    boolean itemFound = adventure.getPlayer().doesItemExist(command[1]);
+                    if (itemFound){
+                        Weapon weaponToBeUnEquipped = adventure.getPlayer().searchWeaponInInventory(command[1]);
+                        if (weaponToBeUnEquipped == adventure.getPlayer().getEquippedWeapon()) {
+                            adventure.getPlayer().unEquipWeapon(weaponToBeUnEquipped);
+                            System.out.println("You've unequipped " + command[1]);
+                        } else {
+                            System.out.println(command[1] + " isn't equipped");
+                        }
+                    }else {
+                        System.out.println(command[1] + " is not in your inventory.");
+                    }
+                }
+
+                case "attack" -> {
+                    if (adventure.getPlayer().getEquippedWeapon() != null) {
+                        Weapon attackWeapon = adventure.getPlayer().getEquippedWeapon();
+                        boolean isRangedWeapon = adventure.getPlayer().isRangedWeapon(attackWeapon.getName());
+                        if (isRangedWeapon) {
+                            RangedWeapon rangedWeaponInUse = adventure.getPlayer().useRangedWeapon(attackWeapon.getName());
+                            if (rangedWeaponInUse.getUses() > 0) {
+                                rangedWeaponInUse.rangedWeaponUsed();
+                                adventure.getPlayer().changeHealth(attackWeapon.getDamage());
+                                System.out.println("You attack with " + attackWeapon.getName() + " You have " + rangedWeaponInUse.getUses() + " ammo left.");
+                            } else if (rangedWeaponInUse.getUses() <= 0) {
+                                System.out.println("You're out of ammo... Equip another weapon or flee!");
+                            }
+                        } else {
+                            adventure.getPlayer().changeHealth(attackWeapon.getDamage());
+                            System.out.println("You attack with " + attackWeapon.getName());
+                        }
+                    } else {
+                        System.out.println("You haven't equipped a weapon!!!");
+                    }
+                }
+
                 case "inventory", "inv" -> System.out.println(adventure.getPlayer().printInventory());
 
                 case "look" -> System.out.println(adventure.getPlayer().getCurrentRoom());
                 case "health" -> System.out.println(adventure.getPlayer().getHealth());
-                case "help" -> System.out.println("""
+                case "help" ->    System.out.println("""
+              
+                COMMANDS:
                                                 
-                                                COMMANDS:
-                                                
-                                                go north
-                                                go south
-                                                go east
-                                                go west
-                                                look
-                                                exit
-                                                
-                                                """);
+                go (north, south, east, west)
+                look (in current room)
+                take / drop (item)
+                inventory (see items)
+                equip / unequip (weapon)
+                attack (weapon)
+                eat (food)
+                health (player)
+                help (prints this list of commands)
+                exit
+                """);
 
 
                 case "exit" -> System.exit(0);

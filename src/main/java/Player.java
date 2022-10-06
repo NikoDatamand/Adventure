@@ -5,12 +5,13 @@ public class Player {
     private Room currentRoom;
     private ArrayList<Item> inventory;
     private int health;
-
+    private Weapon equippedWeapon;
 
     public Player(int health){
         currentRoom = new Room(null, null);
         inventory = new ArrayList<Item>();
         this.health = health;
+        this.equippedWeapon = null;
     }
 
     //Room metoder
@@ -142,7 +143,6 @@ public class Player {
         inventory.remove(searchItemIndex(foodEaten));
     }
 
-
     //Health metoder
     public int getHealth() {
         return health;
@@ -156,5 +156,46 @@ public class Player {
         }
     }
 
+    //Weapon metoder
+    public Weapon searchWeaponInInventory(String item){
+        for (Item s: inventory) {
+            if(s instanceof Weapon weapon)
+                if (weapon.getName().equals(item)){
+                    return weapon;
+                }
+        }
+        return null;
+    }
 
+    public boolean isRangedWeapon(String item){
+        for (Item s: inventory) {
+            if(s instanceof RangedWeapon rangedWeapon)
+                if (rangedWeapon.getName().equals(item)){
+                    return true;
+                }
+        }
+        return false;
+    }
+
+    public RangedWeapon useRangedWeapon(String item){
+        for (Item s: inventory) {
+            if(s instanceof RangedWeapon rangedWeapon)
+                if (rangedWeapon.getName().equals(item)){
+                    return rangedWeapon;
+                }
+        }
+        return null;
+    }
+
+    public void equipWeapon(Weapon weaponEquipped){
+        equippedWeapon = weaponEquipped;
+    }
+
+    public void unEquipWeapon(Weapon weaponUnEquipped){
+        equippedWeapon = weaponUnEquipped;
+    }
+
+    public Weapon getEquippedWeapon() {
+        return equippedWeapon;
+    }
 }

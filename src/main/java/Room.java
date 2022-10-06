@@ -85,6 +85,6 @@ public class Room {
     }
 
     public String toString() {
-        return "You are in the " + name + "\n" + description + "\n" + "You see: " + items;
+        return "You are " + name + "\n" + description + "\n" + "You see: " + items;
     }
 }

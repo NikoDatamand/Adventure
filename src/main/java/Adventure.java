@@ -9,10 +9,6 @@ public class Adventure {
         player.setCurrentRoom(map.getRoom1());
     }
 
-    public Map getMap() {
-        return map;
-    }
-
     public Player getPlayer() {
         return player;
     }

@@ -14,15 +14,15 @@ public class Map {
     }
 
     public void createMap(){
-        room1 = new Room("Library", "Lots of books");
-        room2 = new Room("Office 1", "A pleasant smell of coffee");
-        room3 = new Room("Bathroom", "An unpleasant smell");
-        room4 = new Room("Dining Hall", "No food yet");
-        room5 = new Room("Machine Room", "Noisy, but cool!");
-        room6 = new Room("Office 2", "A silent programmer sitting in the corner");
-        room7 = new Room("Yard", "Birds are singing");
-        room8 = new Room("Entrance Hall", "Wide and empty");
-        room9 = new Room("Reception", "Reception desk. No one here.");
+        room1 = new Room("outside a bar", "This is your bar of choice. Every Friday it gathers programmers of all kinds to get lost in alcohol. But at this ungodly hour, don't even think about entering again!");
+        room2 = new Room("in a dark alley", "This alleyway has an unpleasant odour of piss. Proceed at own risk...");
+        room3 = new Room("inside a kiosk", "It is way too bright inside here! Goods of all kinds are to be found around you, from day-old candy to expensive magazines.");
+        room4 = new Room("at the train station", "This station is sprayed with graffiti and poorly maintained. On top of all, the last train passed by many hours ago.");
+        room5 = new Room("home", "Congratulations! You see your beloved kingsize bed, neatly prepared for a good nights sleep!");
+        room6 = new Room("on a lonely road", "The joke writes itself.");
+        room7 = new Room("in the park", "Inside the dark public park, you smell the local teens lighting up recreational plants.");
+        room8 = new Room("at the bus stop", "A lonesome bus stop is just standing there. Looking at the timetables, it seems like luck is on your side. The busses are still driving!");
+        room9 = new Room("in the P-area", "Situated between endless roads of parked cars. Good luck getting through!");
 
         setDirection(room1, null, room4, room2, null);
         setDirection(room2, null, null, room3, room1);
@@ -36,6 +36,8 @@ public class Map {
 
         addItemsToRoom(room1, "bowl", "bat", "book");
         addFoodToRoom(room1, "apple", 10, "poison", -10);
+        addMeleeWeaponsToRoom(room2, "knife", -10);
+        addRangedWeaponsToRoom(room2, "gun", -50, 1);
     }
 
     //Add items
@@ -68,6 +70,40 @@ public class Map {
         room.addItem(new Food(itemName1, healthPoints1));
         room.addItem(new Food(itemName2, healthPoints2));
         room.addItem(new Food(itemName3, healthPoints3));
+    }
+
+    //Add weapons
+
+    //Add RangedWeapons
+    public void addRangedWeaponsToRoom(Room room, String itemName1, int damage1, int uses1){
+        room.addItem(new RangedWeapon(itemName1, damage1, uses1));
+    }
+
+    public void addRangedWeaponsToRoom(Room room, String itemName1, int damage1, int uses1, String itemName2, int damage2, int uses2){
+        room.addItem(new RangedWeapon(itemName1, damage1, uses1));
+        room.addItem(new RangedWeapon(itemName2, damage2, uses2));
+    }
+
+    public void addRangedWeaponsToRoom(Room room, String itemName1, int damage1, int uses1, String itemName2, int damage2, int uses2, String itemName3, int damage3, int uses3){
+        room.addItem(new RangedWeapon(itemName1, damage1, uses1));
+        room.addItem(new RangedWeapon(itemName2, damage2, uses2));
+        room.addItem(new RangedWeapon(itemName3, damage3, uses3));
+    }
+
+    //Add MeleeWeapons
+    public void addMeleeWeaponsToRoom(Room room, String itemName1, int damage1){
+        room.addItem(new MeleeWeapon(itemName1, damage1));
+    }
+
+    public void addMeleeWeaponsToRoom(Room room, String itemName1, int damage1, String itemName2, int damage2){
+        room.addItem(new MeleeWeapon(itemName1, damage1));
+        room.addItem(new MeleeWeapon(itemName2, damage2));
+    }
+
+    public void addMeleeWeaponsToRoom(Room room, String itemName1, int damage1, String itemName2, int damage2, String itemName3, int damage3){
+        room.addItem(new MeleeWeapon(itemName1, damage1));
+        room.addItem(new MeleeWeapon(itemName2, damage2));
+        room.addItem(new MeleeWeapon(itemName3, damage3));
     }
 
     //Add directions
