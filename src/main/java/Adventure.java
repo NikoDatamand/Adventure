@@ -6,7 +6,7 @@ public class Adventure {
         map = new Map();
         map.createMap();
         player = new Player(100);
-        player.setCurrentRoom(map.getRoom("room1"));
+        player.setCurrentRoom(map.getStartRoom());
     }
 
     public Player getPlayer() {

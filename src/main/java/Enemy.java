@@ -11,9 +11,12 @@ public class Enemy {
     }
 
     //GET
-
     public String getName() {
         return name;
+    }
+
+    public int getHealth() {
+        return health;
     }
 
     public Weapon getEnemyAttackWeapon() {
@@ -27,6 +30,28 @@ public class Enemy {
         } else {
             health = health + changeValue;
         }
+    }
+
+    //Attack
+    public int attackPlayer(){
+            if (enemyAttackWeapon instanceof RangedWeapon) {
+                if (((RangedWeapon) enemyAttackWeapon).getUses() > 0) {
+                    ((RangedWeapon) enemyAttackWeapon).rangedWeaponUsed();
+                    System.out.println("Enemy attacks with " + enemyAttackWeapon.getName() + " it has " + ((RangedWeapon) enemyAttackWeapon).getUses() + " ammo left.");
+                    return enemyAttackWeapon.getDamage();
+                } else if (((RangedWeapon) enemyAttackWeapon).getUses() <= 0) {
+                    System.out.println("The enemy seems to be out of ammo... ");
+                    return 0;
+                }
+            } else if (enemyAttackWeapon instanceof MeleeWeapon) {
+                System.out.println("Enemy attacks with " + enemyAttackWeapon.getName());
+                return enemyAttackWeapon.getDamage();
+            }
+            return 0;
+        }
+
+    public Weapon dropWeapon(){
+        return enemyAttackWeapon;
     }
 
     //ToString

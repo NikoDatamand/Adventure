@@ -151,27 +151,45 @@ public class UserInterface {
                 }
 
                 case "attack" -> {
-                    if (adventure.getPlayer().getEquippedWeapon() != null) {
-                        Weapon attackWeapon = adventure.getPlayer().getEquippedWeapon();
-                        boolean isRangedWeapon = adventure.getPlayer().isRangedWeapon(attackWeapon.getName());
-                        if (isRangedWeapon) {
-                            RangedWeapon rangedWeaponInUse = adventure.getPlayer().useRangedWeapon(attackWeapon.getName());
-                            if (rangedWeaponInUse.getUses() > 0) {
-                                rangedWeaponInUse.rangedWeaponUsed();
-                                adventure.getMap().getRoom("room4").searchEnemy(command[1]).changeHealth(attackWeapon.getDamage());
-                                System.out.println(adventure.getMap().getRoom("room4").searchEnemy(command[1]));
-                                System.out.println("You attack with " + attackWeapon.getName() + " You have " + rangedWeaponInUse.getUses() + " ammo left.");
-                            } else if (rangedWeaponInUse.getUses() <= 0) {
-                                System.out.println("You're out of ammo... Equip another weapon or flee!");
+                        Room currentRoom = adventure.getPlayer().getCurrentRoom();
+                        Enemy enemy =  adventure.getPlayer().getCurrentRoom().searchEnemy(command[1]);
+                        if (enemy != null) {
+                            if (adventure.getPlayer().getEquippedWeapon() != null) {
+                                Weapon attackWeapon = adventure.getPlayer().getEquippedWeapon();
+                                boolean isRangedWeapon = adventure.getPlayer().isRangedWeapon(attackWeapon.getName());
+                                if (isRangedWeapon) {
+                                    RangedWeapon rangedWeaponInUse = adventure.getPlayer().useRangedWeapon(attackWeapon.getName());
+                                    if (rangedWeaponInUse.getUses() > 0) {
+                                        rangedWeaponInUse.rangedWeaponUsed();
+                                        enemy.changeHealth(attackWeapon.getDamage());
+                                        System.out.println("You attack with " + attackWeapon.getName() + " You have " + rangedWeaponInUse.getUses() + " ammo left.");
+                                        if (enemy.getHealth() <= 0) {
+                                            currentRoom.removeEnemiesFromRoom(enemy);
+                                        } else {
+                                            System.out.println(enemy);
+                                        }
+                                    } else if (rangedWeaponInUse.getUses() <= 0) {
+                                        System.out.println("You're out of ammo... Equip another weapon or flee!");
+                                    }
+                                } else {
+                                    System.out.println("You attack with " + attackWeapon.getName());
+                                    enemy.changeHealth(attackWeapon.getDamage());
+                                    if (enemy.getHealth() <= 0) {
+                                        currentRoom.removeEnemiesFromRoom(enemy);
+                                    } else {
+                                        System.out.println(enemy);
+                                    }
+                                }
+                            } else {
+                                System.out.println("You haven't equipped a weapon!!!");
+                            }
+                            if (enemy.getHealth() > 0) {
+                                int enemyDamage = enemy.attackPlayer();
+                                adventure.getPlayer().changeHealth(enemyDamage);
                             }
                         } else {
-                            System.out.println("You attack with " + attackWeapon.getName());
-                            adventure.getMap().getRoom("room4").searchEnemy(command[1]).changeHealth(attackWeapon.getDamage());
-                            System.out.println(adventure.getMap().getRoom("room4").searchEnemy(command[1]));
+                            System.out.println("here is no enemies by that description.");
                         }
-                    } else {
-                        System.out.println("You haven't equipped a weapon!!!");
-                    }
                 }
 
                 case "inventory", "inv" -> System.out.println(adventure.getPlayer().printInventory());

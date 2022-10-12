@@ -9,37 +9,39 @@ public class Map {
     private Room room8 = null;
     private Room room9 = null;
 
-    public Room getRoom(String roomName) {
+    public Room getRoom(Room room) {
+        Room returnRoom = null;
+        String roomName = room.getName();
         switch(roomName) {
             case "room1": {
-                return room1;
+                returnRoom = room1;
             }
             case "room2": {
-                return room2;
+                returnRoom = room2;
             }
             case "room3": {
-                return room3;
+                returnRoom = room3;
             }
             case "room4": {
-                return room4;
+                returnRoom = room4;
             }
             case "room5": {
-                return room5;
+                returnRoom = room5;
             }
             case "room6": {
-                return room6;
+                returnRoom = room6;
             }
             case "room7": {
-                return room7;
+                returnRoom = room7;
             }
             case "room8": {
-                return room8;
+                returnRoom = room8;
             }
             case "room9": {
-                return room9;
+                returnRoom = room9;
             }
         }
-        return null;
+        return returnRoom;
     }
 
     public void createMap(){
@@ -67,7 +69,7 @@ public class Map {
         addFoodToRoom(room1, "apple", 10, "poison", -10);
         addMeleeWeaponsToRoom(room2, "knife", -10);
         addRangedWeaponsToRoom(room2, "gun", -50, 1);
-        addEnemiesToRoom(room4, "thug", 10, new MeleeWeapon("knife", 10));
+        addEnemiesToRoom(room4, "thug", 10, new MeleeWeapon("knife", -10));
     }
 
     //Add items
@@ -158,6 +160,10 @@ public class Map {
         room.setSouth(south);
         room.setEast(east);
         room.setWest(west);
+    }
+
+    public Room getStartRoom(){
+        return room1;
     }
 
 }

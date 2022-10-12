@@ -91,6 +91,10 @@ public class Room {
         enemies.add(enemy);
     }
 
+    public boolean hasEnemy(){
+        return !enemies.isEmpty();
+    }
+
     public Enemy searchEnemy(String enemyName){
         for (Enemy e: enemies) {
             if(e.getName().equals(enemyName))
@@ -106,7 +110,9 @@ public class Room {
                 index = i;
             }
         }
+        items.add(enemy.dropWeapon());
         enemies.remove(index);
+        System.out.println(enemy.getName() + " is dead! " + enemy.getEnemyAttackWeapon() + " was dropped in the room");
     }
 
     //ToString
