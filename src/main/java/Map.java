@@ -9,8 +9,37 @@ public class Map {
     private Room room8 = null;
     private Room room9 = null;
 
-    public Room getRoom1() {
-        return room1;
+    public Room getRoom(String roomName) {
+        switch(roomName) {
+            case "room1": {
+                return room1;
+            }
+            case "room2": {
+                return room2;
+            }
+            case "room3": {
+                return room3;
+            }
+            case "room4": {
+                return room4;
+            }
+            case "room5": {
+                return room5;
+            }
+            case "room6": {
+                return room6;
+            }
+            case "room7": {
+                return room7;
+            }
+            case "room8": {
+                return room8;
+            }
+            case "room9": {
+                return room9;
+            }
+        }
+        return null;
     }
 
     public void createMap(){
@@ -38,6 +67,7 @@ public class Map {
         addFoodToRoom(room1, "apple", 10, "poison", -10);
         addMeleeWeaponsToRoom(room2, "knife", -10);
         addRangedWeaponsToRoom(room2, "gun", -50, 1);
+        addEnemiesToRoom(room4, "thug", 10, new MeleeWeapon("knife", 10));
     }
 
     //Add items
@@ -104,6 +134,22 @@ public class Map {
         room.addItem(new MeleeWeapon(itemName1, damage1));
         room.addItem(new MeleeWeapon(itemName2, damage2));
         room.addItem(new MeleeWeapon(itemName3, damage3));
+    }
+
+    //Add enemies
+    public void addEnemiesToRoom(Room room, String enemyName1, int enemyHealth1, Weapon enemyWeapon1){
+        room.addEnemy(new Enemy(enemyName1, enemyHealth1, enemyWeapon1));
+    }
+
+    public void addEnemiesToRoom(Room room, String enemyName1, String enemyName2, int enemyHealth1, int enemyHealth2, Weapon enemyWeapon1, Weapon enemyWeapon2){
+        room.addEnemy(new Enemy(enemyName1, enemyHealth1, enemyWeapon1));
+        room.addEnemy(new Enemy(enemyName2, enemyHealth2, enemyWeapon2));
+    }
+
+    public void addEnemiesToRoom(Room room, String enemyName1, String enemyName2, String enemyName3, int enemyHealth1, int enemyHealth2, int enemyHealth3, Weapon enemyWeapon1, Weapon enemyWeapon2, Weapon enemyWeapon3){
+        room.addEnemy(new Enemy(enemyName1, enemyHealth1, enemyWeapon1));
+        room.addEnemy(new Enemy(enemyName2, enemyHealth2, enemyWeapon2));
+        room.addEnemy(new Enemy(enemyName3, enemyHealth3, enemyWeapon3));
     }
 
     //Add directions

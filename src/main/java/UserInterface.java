@@ -24,10 +24,10 @@ public class UserInterface {
                 take / drop (item)
                 inventory (see items)
                 equip / unequip (weapon)
-                attack (weapon)
-                eat (food)
-                health (player)
-                help (prints this list of commands)
+                attack (with equipped weapon)
+                eat (food in inventory)
+                health (see your health)
+                help (print this list of commands)
                 exit
                 """);
         System.out.println(adventure.getPlayer().getCurrentRoom());
@@ -35,6 +35,7 @@ public class UserInterface {
     }
     public void handleInput(){
         while (true) {
+            System.out.println(" ");
             System.out.println("What do you want to do?");
             String action = sc.nextLine().toLowerCase();
             String[] command = action.split(" ");
@@ -157,14 +158,16 @@ public class UserInterface {
                             RangedWeapon rangedWeaponInUse = adventure.getPlayer().useRangedWeapon(attackWeapon.getName());
                             if (rangedWeaponInUse.getUses() > 0) {
                                 rangedWeaponInUse.rangedWeaponUsed();
-                                adventure.getPlayer().changeHealth(attackWeapon.getDamage());
+                                adventure.getMap().getRoom("room4").searchEnemy(command[1]).changeHealth(attackWeapon.getDamage());
+                                System.out.println(adventure.getMap().getRoom("room4").searchEnemy(command[1]));
                                 System.out.println("You attack with " + attackWeapon.getName() + " You have " + rangedWeaponInUse.getUses() + " ammo left.");
                             } else if (rangedWeaponInUse.getUses() <= 0) {
                                 System.out.println("You're out of ammo... Equip another weapon or flee!");
                             }
                         } else {
-                            adventure.getPlayer().changeHealth(attackWeapon.getDamage());
                             System.out.println("You attack with " + attackWeapon.getName());
+                            adventure.getMap().getRoom("room4").searchEnemy(command[1]).changeHealth(attackWeapon.getDamage());
+                            System.out.println(adventure.getMap().getRoom("room4").searchEnemy(command[1]));
                         }
                     } else {
                         System.out.println("You haven't equipped a weapon!!!");
@@ -184,10 +187,10 @@ public class UserInterface {
                 take / drop (item)
                 inventory (see items)
                 equip / unequip (weapon)
-                attack (weapon)
-                eat (food)
-                health (player)
-                help (prints this list of commands)
+                attack (with equipped weapon)
+                eat (food in inventory)
+                health (see your health)
+                help (print this list of commands)
                 exit
                 """);
 

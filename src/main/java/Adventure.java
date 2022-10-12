@@ -6,11 +6,15 @@ public class Adventure {
         map = new Map();
         map.createMap();
         player = new Player(100);
-        player.setCurrentRoom(map.getRoom1());
+        player.setCurrentRoom(map.getRoom("room1"));
     }
 
     public Player getPlayer() {
         return player;
+    }
+
+    public Map getMap(){
+        return map;
     }
 
     public boolean goNorth(){
