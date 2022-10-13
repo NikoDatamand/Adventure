@@ -9,74 +9,6 @@ public class Map {
     private Room room8 = null;
     private Room room9 = null;
 
-    public Room getRoom(Room room) {
-        Room returnRoom = null;
-        String roomName = room.getName();
-        switch(roomName) {
-            case "room1": {
-                returnRoom = room1;
-            }
-            case "room2": {
-                returnRoom = room2;
-            }
-            case "room3": {
-                returnRoom = room3;
-            }
-            case "room4": {
-                returnRoom = room4;
-            }
-            case "room5": {
-                returnRoom = room5;
-            }
-            case "room6": {
-                returnRoom = room6;
-            }
-            case "room7": {
-                returnRoom = room7;
-            }
-            case "room8": {
-                returnRoom = room8;
-            }
-            case "room9": {
-                returnRoom = room9;
-            }
-        }
-        return returnRoom;
-    }
-
-    public Room getRoomByNumber(int roomID) {
-        switch(roomID) {
-            case 1: {
-                return room1;
-            }
-            case 2: {
-                return room2;
-            }
-            case 3: {
-                return room3;
-            }
-            case 4: {
-                return room4;
-            }
-            case 5: {
-                return room5;
-            }
-            case 6: {
-                return room6;
-            }
-            case 7: {
-                return room7;
-            }
-            case 8: {
-                return room8;
-            }
-            case 9: {
-                return room9;
-            }
-        }
-        return null;
-    }
-
     public void createMap(){
         room1 = new Room("outside a bar", "This is your bar of choice. Every Friday it gathers programmers of all kinds to get lost in alcohol. But at this ungodly hour, don't even think about entering again!");
         room2 = new Room("in a dark alley", "This alleyway has an unpleasant odour of piss. Proceed at own risk...");
@@ -111,6 +43,39 @@ public class Map {
         addEnemiesToRoom(room9, "thug1", "a threatening", 120, new MeleeWeapon("punch", "a packed", false, 0, -20), null);
         addEnemiesToRoom(room9, "thug2", "a threatening", 120, new MeleeWeapon("punch", "a packed", false, 0, -20), new Key("card", "a stolen transit", false, 0, 3));
         addEnemiesToRoom(room9, "thug3", "a threatening", 120, new MeleeWeapon("punch", "a packed", false, 0, -20), null);
+    }
+
+    public Room getRoomByNumber(int roomID) {
+        switch(roomID) {
+            case 1: {
+                return room1;
+            }
+            case 2: {
+                return room2;
+            }
+            case 3: {
+                return room3;
+            }
+            case 4: {
+                return room4;
+            }
+            case 5: {
+                return room5;
+            }
+            case 6: {
+                return room6;
+            }
+            case 7: {
+                return room7;
+            }
+            case 8: {
+                return room8;
+            }
+            case 9: {
+                return room9;
+            }
+        }
+        return null;
     }
 
     //Add food

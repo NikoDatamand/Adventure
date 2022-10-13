@@ -27,10 +27,12 @@ public class Item {
         return lockID;
     }
 
-    public void unlock(){
-        isLocked = false;
-    }
     public boolean isLocked(){
         return isLocked;
     }
+
+    public void unlock(){
+        isLocked = false;
+    }
+
 }

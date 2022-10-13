@@ -27,10 +27,6 @@ public class Room {
         return name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     public Room getNorth() {
         return north;
     }
