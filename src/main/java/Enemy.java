@@ -1,18 +1,26 @@
 public class Enemy {
 
     private String name;
+    private String description;
     private int health;
     private Weapon enemyAttackWeapon;
+    private Item carriedItem;
 
-    public Enemy (String name, int health, Weapon enemyAttackWeapon) {
+    public Enemy (String name, String description, int health, Weapon enemyAttackWeapon, Item carriedItem) {
         this.name = name;
+        this.description = description;
         this.health = health;
         this.enemyAttackWeapon = enemyAttackWeapon;
+        this.carriedItem = carriedItem;
     }
 
     //GET
     public String getName() {
         return name;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public int getHealth() {
@@ -21,6 +29,10 @@ public class Enemy {
 
     public Weapon getEnemyAttackWeapon() {
         return enemyAttackWeapon;
+    }
+
+    public Item getCarriedItem() {
+        return carriedItem;
     }
 
     //SET
@@ -52,6 +64,10 @@ public class Enemy {
 
     public Weapon dropWeapon(){
         return enemyAttackWeapon;
+    }
+
+    public Item dropCarriedItem() {
+        return carriedItem;
     }
 
     //ToString

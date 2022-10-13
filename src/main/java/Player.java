@@ -7,7 +7,7 @@ public class Player {
     private int health;
     private Weapon equippedWeapon;
 
-    public Player(int health){
+    public Player(){
         currentRoom = new Room(null, null);
         inventory = new ArrayList<Item>();
         this.health = health;
@@ -198,4 +198,22 @@ public class Player {
     public Weapon getEquippedWeapon() {
         return equippedWeapon;
     }
+
+    // Key metoder
+    public Key searchKeyInInventory(String item){
+        for (Item s: inventory) {
+            if(s instanceof Key key)
+                if (key.getName().equals(item)){
+                    return key;
+                }
+        }
+        return null;
+    }
+
+    public void useKey(String keyUsed){
+        inventory.remove(searchItemIndex(keyUsed));
+    }
+
 }
+
+

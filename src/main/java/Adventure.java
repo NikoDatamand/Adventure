@@ -5,7 +5,7 @@ public class Adventure {
     public Adventure(){
         map = new Map();
         map.createMap();
-        player = new Player(100);
+        player = new Player();
         player.setCurrentRoom(map.getStartRoom());
     }
 
@@ -16,7 +16,6 @@ public class Adventure {
     public Map getMap(){
         return map;
     }
-
     public boolean goNorth(){
         return player.goNorth();
     }

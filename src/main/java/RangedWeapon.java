@@ -2,8 +2,8 @@ public class RangedWeapon extends Weapon {
 
     private int uses;
 
-    public RangedWeapon(String name, int damage, int uses) {
-        super(name, damage);
+    public RangedWeapon(String name, String description, boolean isLocked, int lockID, int damage, int uses) {
+        super(name, description, isLocked, lockID, damage);
         this.uses = uses;
     }
 

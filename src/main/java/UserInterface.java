@@ -1,5 +1,6 @@
 import org.w3c.dom.ranges.Range;
 
+import java.util.Random;
 import java.util.Scanner;
 public class UserInterface {
     private Adventure adventure;
@@ -9,34 +10,47 @@ public class UserInterface {
         adventure = new Adventure();
         sc = new Scanner(System.in);
     }
-    public void start(){
-        System.out.println("""
-                
-                After a long day of work, you get awfully drunk with your colleagues.
-                Looking at the clock, you decide to leave the bar and head home.
-                But dragging your drunk corpse of a body around the city at night,
-                seems more difficult than it seems...
-                
-                COMMANDS:
-                                                
-                go (north, south, east, west)
-                look (in current room)
-                take / drop (item)
-                inventory (see items)
-                equip / unequip (weapon)
-                attack (with equipped weapon)
-                eat (food in inventory)
-                health (see your health)
-                help (print this list of commands)
-                exit
-                """);
-        System.out.println(adventure.getPlayer().getCurrentRoom());
-        handleInput();
+    public void start() {
+                adventure.getPlayer().changeHealth(100);
+                System.out.println("""
+                                        
+                        After a long day of work, you get awfully drunk with your colleagues.
+                        Looking at the clock, you decide to leave the bar and head home.
+                        But dragging your drunk corpse of a body around the city at night,
+                        seems more difficult than it seems...
+                                        
+                        COMMANDS:
+                                                        
+                        go (north, south, east, west)
+                        look (in current room)
+                        take / drop (item)
+                        inventory (see items)
+                        use (item)
+                        equip / unequip (weapon)
+                        attack (enemy with equipped weapon)
+                        eat / drink / smoke (consumable in inventory)
+                        health (see your health)
+                        help (print this list of commands)
+                        exit
+                        """);
+                System.out.println(adventure.getPlayer().getCurrentRoom());
+                handleInput();
+                System.out.println("GAME OVER");
+                System.out.println("Press '1' to play again, and '0' to exit the game");
+                int gameInSeesion = sc.nextInt();
+                if (gameInSeesion == 1) {
+                    start();
+                } else if (gameInSeesion == 0){
+                    System.exit(0);
+                }
     }
     public void handleInput(){
-        while (true) {
+        while (adventure.getPlayer().getHealth() > 0) {
             System.out.println(" ");
             System.out.println("What do you want to do?");
+            if (adventure.getPlayer().getCurrentRoom().getName().equals("room9")) {
+                System.out.println("You won the game. If you want to try again, press '1' and if you want to quit, press '2'");
+            }
             String action = sc.nextLine().toLowerCase();
             String[] command = action.split(" ");
 
@@ -48,6 +62,8 @@ public class UserInterface {
                             if (goingNorth) {
                                 System.out.println("going north");
                                 System.out.println(adventure.getPlayer().getCurrentRoom());
+                            } else if (adventure.getPlayer().getCurrentRoom().getName().equals("room9")) {
+                                System.out.println("You need a transit card to get home!");
                             } else  {
                                 System.out.println("You can't go that way!");
                             }
@@ -83,12 +99,18 @@ public class UserInterface {
                             }
                         }
                     }
-
                 }
+
                 case "take" -> {
-                    boolean itemTaken = adventure.getPlayer().takeItem(command[1]);
-                    if (itemTaken) {
-                        System.out.println("You've taken " + command[1]);
+                    Item itemOfInterest = adventure.getPlayer().getCurrentRoom().searchItem(command[1]);
+                    if (itemOfInterest != null) {
+                        if (itemOfInterest.isLocked()) {
+                            System.out.println(command[1] + " is locked. You have to use something to obtain it!");
+                        }
+                        else {
+                            adventure.getPlayer().takeItem(command[1]);
+                            System.out.println("You've taken " + command[1]);
+                        }
                      } else {
                         System.out.println(command[1] + " couldn't be found in this room");
                     }
@@ -103,18 +125,51 @@ public class UserInterface {
                     }
                 }
 
-                case "eat" -> {
+                case "use" -> {
+                    boolean itemFound = adventure.getPlayer().doesItemExist(command[1]);
+                    if (itemFound){
+                        Key key = adventure.getPlayer().searchKeyInInventory(command[1]);
+                        if (key != null) {
+                            if (adventure.getPlayer().getCurrentRoom() == adventure.getMap().getRoomByNumber(9) || key.getKeyID() == 3) {
+                                adventure.getMap().finalKey();
+                                System.out.println("You see the bus coming you way! Press 'go north' if you are ready to head home");
+                            } else {
+                                Item itemToUnlock = adventure.getPlayer().getCurrentRoom().searchItemFromLockID(key.getKeyID());
+                                itemToUnlock.unlock();
+                                adventure.getPlayer().useKey(command[1]);
+                                System.out.println("you used " + command[1]);
+                            }
+                        } else {
+                            System.out.println(command[1] + " can't be used here!");
+                        }
+                    } else {
+                        System.out.println(command[1] + " is not in your inventory.");
+                    }
+                }
+
+                case "eat", "drink","smoke" -> {
                     boolean itemFound = adventure.getPlayer().doesItemExist(command[1]);
                     if (itemFound){
                         Food foodToBeEaten = adventure.getPlayer().searchFoodInInventory(command[1]);
                         if (foodToBeEaten != null) {
-                            adventure.getPlayer().changeHealth(foodToBeEaten.getHealthPoints());
-                            adventure.getPlayer().eatFood(command[1]);
-                            System.out.println("You've eaten " + command[1]);
+                            if (foodToBeEaten.getUses() > 0) {
+                                if (foodToBeEaten.getName().equals("joint")) {
+                                    System.out.println("You get insanely high, and see yourself teleported to another plain ");
+                                    Random randomizer = new Random();
+                                    adventure.getPlayer().setCurrentRoom(adventure.getMap().getRoomByNumber(randomizer.nextInt(8)));
+                                }
+                                adventure.getPlayer().changeHealth(foodToBeEaten.getHealthPoints());
+                                foodToBeEaten.consumableUsed();
+                                System.out.println("You've consumed " + command[1]);
+                                System.out.println("Your health is now at " + adventure.getPlayer().getHealth());
+                            } else {
+                                adventure.getPlayer().eatFood(command[1]);
+                            }
+                            System.out.println("You have " + foodToBeEaten.getUses() + " left");
                         } else {
                             System.out.println(command[1] + " isn't food!");
                         }
-                    }else {
+                    } else {
                         System.out.println(command[1] + " is not in your inventory.");
                     }
 
@@ -151,8 +206,8 @@ public class UserInterface {
                 }
 
                 case "attack" -> {
-                        Room currentRoom = adventure.getPlayer().getCurrentRoom();
-                        Enemy enemy =  adventure.getPlayer().getCurrentRoom().searchEnemy(command[1]);
+                    Room currentRoom = adventure.getPlayer().getCurrentRoom();
+                    Enemy enemy =  adventure.getPlayer().getCurrentRoom().searchEnemy(command[1]);
                         if (enemy != null) {
                             if (adventure.getPlayer().getEquippedWeapon() != null) {
                                 Weapon attackWeapon = adventure.getPlayer().getEquippedWeapon();
@@ -186,6 +241,7 @@ public class UserInterface {
                             if (enemy.getHealth() > 0) {
                                 int enemyDamage = enemy.attackPlayer();
                                 adventure.getPlayer().changeHealth(enemyDamage);
+                                System.out.println("Your health is now at " + adventure.getPlayer().getHealth());
                             }
                         } else {
                             System.out.println("here is no enemies by that description.");
@@ -204,15 +260,14 @@ public class UserInterface {
                 look (in current room)
                 take / drop (item)
                 inventory (see items)
+                use (item)
                 equip / unequip (weapon)
-                attack (with equipped weapon)
-                eat (food in inventory)
+                attack (enemy with equipped weapon)
+                eat / drink / smoke (consumable in inventory)
                 health (see your health)
                 help (print this list of commands)
                 exit
                 """);
-
-
                 case "exit" -> System.exit(0);
                 default-> System.out.println("Invalid request, try again.");
             }
