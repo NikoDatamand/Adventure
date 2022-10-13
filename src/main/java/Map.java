@@ -98,16 +98,16 @@ public class Map {
         setDirection(room8, null, null, room9, room7);
         setDirection(room9, room6, null, null, room8);
 
-        addFoodToRoom(room1, "cigarettes", "a unopened pack of", false, 0, 10, 20);
+        addFoodToRoom(room1, "cigarettes", "a pack of", false, 0, 10, 20);
         addFoodToRoom(room4, "taquito", "a leftover spicy", false, 0, 20, 1);
         addFoodToRoom(room3, "energydrink", "a posionous looking", true, 1, 20, 1);
         addFoodToRoom(room3, "samosa", "a steaming hot", true, 2, 50, 1);
-        addMeleeWeaponsToRoom(room2, "knife", "a ", false, 0, -40);
-        addEnemiesToRoom(room2, "hobo", "a stinky", 60, new MeleeWeapon("fists", "his ", false, 0, -5), new Key("change", "some spare ", false, 0, 1));
+        addMeleeWeaponsToRoom(room2, "knife", "a", false, 0, -40);
+        addEnemiesToRoom(room2, "hobo", "a stinky", 60, new MeleeWeapon("fists", "his", false, 0, -5), new Key("change", "some spare", false, 0, 1));
         addEnemiesToRoom(room3, "kiosk_owner", "an old and angry", 100, new RangedWeapon("shotgun", "", false, 0, -100, 5), null);
-        addEnemiesToRoom(room4, "rat", "a mutated", 40, new MeleeWeapon("bite", "a disgusting", false, 0, -15), new Key("money ", "some lost ", false, 0, 2));
-        addEnemiesToRoom(room7, "bully", "a young", 80, new RangedWeapon("slingshot", "a ", false, 0, -20, 5), null);
-        addEnemiesToRoom(room7, "bully2", "an older", 80, new RangedWeapon("slingshot", "a ", false, 0, -20, 5), new Food("joint", "a fat rolled all-green ", false, 0, 0, 1));
+        addEnemiesToRoom(room4, "rat", "a mutated", 40, new MeleeWeapon("bite", "a disgusting", false, 0, -15), new Key("money ", "some lost", false, 0, 2));
+        addEnemiesToRoom(room7, "bully", "a young", 80, new RangedWeapon("slingshot", "a", false, 0, -20, 5), null);
+        addEnemiesToRoom(room7, "bully2", "an older", 80, new RangedWeapon("slingshot", "a ", false, 0, -20, 5), new Food("joint", "a fat rolled all-green", false, 0, 0, 1));
         addEnemiesToRoom(room9, "thug1", "a threatening", 120, new MeleeWeapon("punch", "a packed", false, 0, -20), null);
         addEnemiesToRoom(room9, "thug2", "a threatening", 120, new MeleeWeapon("punch", "a packed", false, 0, -20), new Key("card", "a stolen transit", false, 0, 3));
         addEnemiesToRoom(room9, "thug3", "a threatening", 120, new MeleeWeapon("punch", "a packed", false, 0, -20), null);

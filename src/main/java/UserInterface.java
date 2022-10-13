@@ -162,10 +162,13 @@ public class UserInterface {
                                 foodToBeEaten.consumableUsed();
                                 System.out.println("You've consumed " + command[1]);
                                 System.out.println("Your health is now at " + adventure.getPlayer().getHealth());
+                                System.out.println("You have " + foodToBeEaten.getUses() + " left");
+                                if (foodToBeEaten.getUses() == 0) {
+                                    adventure.getPlayer().eatFood(command[1]);
+                                }
                             } else {
                                 adventure.getPlayer().eatFood(command[1]);
                             }
-                            System.out.println("You have " + foodToBeEaten.getUses() + " left");
                         } else {
                             System.out.println(command[1] + " isn't food!");
                         }
